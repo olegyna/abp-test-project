@@ -17,7 +17,12 @@ function MainPage() {
            const { Results } = await getVin(vin)
            const cache = filter(Results)
            setDecode(cache)
-           setHistory(history.concat(vin))
+            if (history.length === 5){
+                history.shift();
+                setHistory(history.concat(vin))
+            }else {
+                setHistory(history.concat(vin))
+            }
     }
 
     const onClick = async (value) => {
@@ -29,6 +34,7 @@ function MainPage() {
 
     return (
         <div>
+            <h1>Vin decoder</h1>
             <input
                 maxLength={17}
                 onChange={(e) => onchange(e)}
@@ -37,6 +43,7 @@ function MainPage() {
             <Link to={'/variables'}>
                 Variables
             </Link>
+            <div>History of search</div>
             <ul>
                 {history.map((value, index) => (
                     <li key={index}>
