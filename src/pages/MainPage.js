@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {getVin} from "../service/api";
 import {filter} from "../utils/filter";
 import {Link} from "react-router-dom";
+import "./mainPage.css";
 
 function MainPage() {
     const [vin, setVin] = useState('');
@@ -34,12 +35,15 @@ function MainPage() {
 
     return (
         <div>
+            <div className="mainWrapper">
             <h1>Vin decoder</h1>
-            <input
+            <input className="inputStyle"
                 maxLength={17}
+                   placeholder="input vin"
                 onChange={(e) => onchange(e)}
                 value={vin} />
             <button onClick={getInformation}>Decode Vin</button>
+                </div>
             <Link to={'/variables'}>
                 Variables
             </Link>
@@ -55,8 +59,8 @@ function MainPage() {
             </ul>
             <div>
                 {decode.map((i) => (
-                    <div key={i.VariableId}>
-                        <div>
+                    <div key={i.VariableId} className="variablesContainer" >
+                        <div className="variableElement">
                             {i.Variable}
                         </div>
                         <div>

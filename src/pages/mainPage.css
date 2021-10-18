@@ -1,0 +1,19 @@
+h1 {
+    position: center;
+    margin-top : 33px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.variablesContainer {
+    display: flex;
+    justify-content: center;
+
+}
+
+.variableElement {
+    color: brown;
+    margin-right: 30px;
+}

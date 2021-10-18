@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getList} from "../service/api";
 import { Link } from 'react-router-dom';
+import './variableList.css';
 
 
 function VariablesList () {
@@ -17,9 +18,10 @@ function VariablesList () {
 
     return (
         <div>
+            <div className="wrapper">
             {variables.map((i) => (
-                <React.Fragment key={i.ID}>
-                    <Link to={{
+                <div className="box" key={i.ID}>
+                    <Link className="variableName" to={{
                         pathname: `/variables/${i.ID}`,
                         id: i.ID
                     }}>
@@ -28,8 +30,9 @@ function VariablesList () {
                         </div>
                     </Link>
                     <div dangerouslySetInnerHTML={{__html: i.Description}} />
-                </React.Fragment>
+                </div>
             ))}
+            </div>
         </div>
     )
 }
